@@ -38,11 +38,37 @@ public:
     SOFA_ABSTRACT_CLASS(SOFA_TEMPLATE(SingleStateAccessor, DataTypes), StateAccessor);
 
     void init() override;
+    /**
+     * !!! WARNING since v25.12 !!!
+     * 
+     * The template method pattern has been applied to this part of the API.
+     * This method calls the newly introduced method "doGetMState" internally,
+     * which is the method to override from now on.
+     * 
+     **/
+    virtual MechanicalState<DataTypes>* getMState() final {
+        //TODO (SPRINT SED 2025): Component state mechamism
+        return this->doGetMState();
+    }
 
-    MechanicalState<DataTypes>* getMState();
-    const MechanicalState<DataTypes>* getMState() const;
+    /**
+     * !!! WARNING since v25.12 !!!
+     * 
+     * The template method pattern has been applied to this part of the API.
+     * This method calls the newly introduced method "doGetMState" internally,
+     * which is the method to override from now on.
+     * 
+     **/
+    virtual const MechanicalState<DataTypes>* getMState() const final
+    {
+        //TODO (SPRINT SED 2025): Component state mechamism
+        return this->doGetMState();
+    }
 
 protected:
+
+    virtual MechanicalState<DataTypes>* doGetMState() = 0;
+    virtual const MechanicalState<DataTypes>* doGetMState() const = 0;
 
     explicit SingleStateAccessor(MechanicalState<DataTypes>* mm = nullptr);
 

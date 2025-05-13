@@ -56,13 +56,13 @@ void SingleStateAccessor<DataTypes>::init()
 }
 
 template<class DataTypes>
-auto SingleStateAccessor<DataTypes>::getMState() -> MechanicalState<DataTypes>*
+auto SingleStateAccessor<DataTypes>::doGetMState() -> MechanicalState<DataTypes>*
 { 
     return mstate.get(); 
 }
 
 template<class DataTypes>
-auto SingleStateAccessor<DataTypes>::getMState() const -> const MechanicalState<DataTypes>*
+auto SingleStateAccessor<DataTypes>::doGetMState() const -> const MechanicalState<DataTypes>*
 { 
     return mstate.get(); 
 }
